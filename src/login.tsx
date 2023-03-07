@@ -1,8 +1,8 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/login.css";
 
-function Login() {
+function Login(props) {
   function handleLabelPlaceholder(e) {
     console.log(e);
     if (e.target instanceof HTMLInputElement) {
@@ -32,6 +32,9 @@ function Login() {
         label.animate(keyframes, options);
       }
     }
+  }
+  function handleNavUpdate(page: String) {
+    props.updateNav(page);
   }
 
   return (
@@ -68,12 +71,12 @@ function Login() {
               Mot de passe oublié ?
             </a>
           </div>
-          <Link to={"/home"} className="btnLong">
+          <Link to={"/home"} className="btnLong" onClick={() => handleNavUpdate("home")}>
             Se connecter
           </Link>
         </form>
         <p id="autresMethodes">D'autres façons de se connecter :</p>
-        <Link to={"/home"} className="btnLong">
+        <Link to={"/home"} className="btnLong" onClick={() => handleNavUpdate("home")}>
           Se connecter avec sesame
         </Link>
         <div id="personnel">

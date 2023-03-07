@@ -9,14 +9,14 @@ import Login from "./login";
 const customHistory = createBrowserHistory();
 
 function App() {
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState<String>("login");
 
   return (
     <Router history={customHistory}>
-      <Navbar />
+      <Navbar type={page} />
       <Switch>
         <Route exact path="/">
-          <Login />
+          <Login updateNav={setPage} />
         </Route>
         <Route path="/home">
           <h1>Hello world!🚀</h1>

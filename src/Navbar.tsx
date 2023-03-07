@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/navbar.css";
 
-function Navbar() {
+function Navbar(props) {
   return (
     <nav>
       <img src="/rennes.svg" alt="Université de rennes" />

@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve("dist"),
     filename: "main.js",
+    publicPath: '/',
   },
   //define babel loader
   module: {
@@ -18,6 +19,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, "public"),
     },

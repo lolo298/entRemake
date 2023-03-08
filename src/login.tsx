@@ -1,8 +1,10 @@
+///<reference path="../types/Login.d.ts" />
+import { LoginProps } from "Login";
 import React, { CSSProperties, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/login.css";
 
-function Login(props) {
+function Login(props: LoginProps) {
   function handleLabelPlaceholder(e) {
     console.log(e);
     if (e.target instanceof HTMLInputElement) {
@@ -33,7 +35,7 @@ function Login(props) {
       }
     }
   }
-  function handleNavUpdate(page: String) {
+  function handleNavUpdate(page: string) {
     props.updateNav(page);
   }
 
@@ -83,7 +85,9 @@ function Login(props) {
           <header
             onClick={(e) => {
               if (e.target instanceof HTMLElement) {
-                window.open(e.target.querySelector("a").href, "_blank");
+                const target = e.target.querySelector("a");
+                if (!target) throw new Error("No link found");
+                window.open(target.href, "_blank");
               }
             }}
           >

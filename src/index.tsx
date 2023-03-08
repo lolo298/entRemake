@@ -4,12 +4,12 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./Navbar";
-import Login from "./login";
+import Login from "./Login";
 
 const customHistory = createBrowserHistory();
 
 function App() {
-  const [page, setPage] = useState<String>("login");
+  const [page, setPage] = useState<string>("login");
 
   return (
     <Router history={customHistory}>
@@ -25,6 +25,7 @@ function App() {
     </Router>
   );
 }
-
-createRoot(document.getElementById("root")).render(<App />);
+const domRoot = document.getElementById("root");
+if (!domRoot) throw new Error("Root element not found");
+createRoot(domRoot).render(<App />);
 

@@ -3,8 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch } from "react-router-dom";
 
-import Navbar from "./Navbar";
-import Login from "./Login";
+import { Navbar, Login } from "./components";
 
 const customHistory = createBrowserHistory();
 

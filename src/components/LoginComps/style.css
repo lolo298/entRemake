@@ -1,0 +1,6 @@
+a {
+    width: max-content;
+    text-align: left;
+    text-decoration: underline;
+    /* align-self: flex-start; */
+}

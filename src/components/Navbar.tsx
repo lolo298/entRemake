@@ -1,10 +1,8 @@
-/// <reference path="../types/Navbar.d.ts" />
 import { NavbarProps } from "Navbar";
-import { css } from "@emotion/react";
+import { jsx, css } from "@emotion/react";
 import React from "react";
-import "./css/navbar.css";
 
-function Navbar(props: NavbarProps) {
+export function Navbar(props: NavbarProps) {
   let navStyle = css`
     background-color: white;
     height: 10%;
@@ -29,13 +27,11 @@ function Navbar(props: NavbarProps) {
 
   return (
     <nav css={navStyle}>
-      <img src="/rennes.svg" alt="Université de rennes" />
+      <img src="/rennes.svg" alt="Université de rennes" css={imgStyle} />
       <div>
-        <p>Université</p>
-        <p>de Rennes</p>
+        <p css={pStyle}>Université</p>
+        <p css={pStyle}>de Rennes</p>
       </div>
     </nav>
   );
 }
-
-export default Navbar;

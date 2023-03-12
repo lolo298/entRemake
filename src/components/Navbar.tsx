@@ -5,6 +5,7 @@ import React from "react";
 export function Navbar(props: NavbarProps) {
   let navStyle = css`
     background-color: white;
+    border-bottom: 2px solid black;
     height: 10%;
     width: 100%;
     display: flex;

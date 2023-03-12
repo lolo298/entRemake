@@ -1,7 +1,6 @@
 import { LoginProps } from "Login";
 import { Link } from "react-router-dom";
-import { loginLabel, btnLong, oubli } from "./css";
-import { fullCol } from "../cssGlobs";
+import { loginLabel, btnLong, oubli, loginForm } from "./css";
 
 export function LoginForm(props: LoginProps) {
   function handleNavUpdate(page: string) {
@@ -15,7 +14,7 @@ export function LoginForm(props: LoginProps) {
         let input = e.target;
         let label = input.previousElementSibling;
 
-        let keyframes = [{ transform: "translateY(0)" }, { transform: "translateY(-200%)" }];
+        let keyframes = [{ transform: "translateY(0)" }, { transform: "translateY(-150%)" }];
         let options = {
           duration: 200,
           easing: "ease-in-out",
@@ -28,7 +27,7 @@ export function LoginForm(props: LoginProps) {
         let input = e.target;
         let label = input.previousElementSibling;
 
-        let keyframes = [{ transform: "translateY(-200%)" }, { transform: "translateY(0)" }];
+        let keyframes = [{ transform: "translateY(-150%)" }, { transform: "translateY(0)" }];
         let options = {
           duration: 200,
           easing: "ease-in-out",
@@ -40,7 +39,7 @@ export function LoginForm(props: LoginProps) {
   }
 
   return (
-    <form action="#" id="loginForm" css={fullCol}>
+    <form action="#" id="loginForm" css={loginForm}>
       <label htmlFor="login" css={loginLabel}>
         <span>Identifiant</span>
         <input
@@ -64,12 +63,8 @@ export function LoginForm(props: LoginProps) {
         />
       </label>
       <div css={oubli}>
-        <a href="https://youtu.be/dQw4w9WgXcQ">
-          Identifiant oublié ?
-        </a>
-        <a href="https://youtu.be/dQw4w9WgXcQ">
-          Mot de passe oublié ?
-        </a>
+        <a href="https://youtu.be/dQw4w9WgXcQ">Identifiant oublié ?</a>
+        <a href="https://youtu.be/dQw4w9WgXcQ">Mot de passe oublié ?</a>
       </div>
       <Link to={"/home"} css={btnLong} onClick={() => handleNavUpdate("home")}>
         Se connecter

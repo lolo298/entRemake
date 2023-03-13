@@ -14,7 +14,7 @@ export const fullCol = css`
   ${full}
   ${flexCol}
 `;
-export const NavCss = css`
+export let NavCss = css`
   width: 100%;
   ul {
     display: flex;
@@ -23,6 +23,7 @@ export const NavCss = css`
     justify-content: center;
     gap: 7rem;
     a {
+      position: relative;
       text-decoration: none;
       color: #000;
       &:visited {

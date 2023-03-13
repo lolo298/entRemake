@@ -7,8 +7,10 @@ import { app, loginContent, btnLong } from "./LoginComps";
 
 export function Login(props: LoginProps) {
   function handleNavUpdate(page: string) {
+    document.cookie = `page=${page}`;
     props.updateNav(page);
   }
+  document.cookie = `page=login`;
 
   return (
     <div id="app" css={app}>

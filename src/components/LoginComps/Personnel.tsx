@@ -8,6 +8,7 @@ export function Personnel(props) {
       window.open(target.href, "_blank");
     }
   }  function handleNavUpdate(page: string) {
+    document.cookie = `page=${page}`;
     props.updateNav(page);
   }
 

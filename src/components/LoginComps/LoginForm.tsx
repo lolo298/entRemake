@@ -4,6 +4,7 @@ import { loginLabel, btnLong, oubli, loginForm } from "./css";
 
 export function LoginForm(props: LoginProps) {
   function handleNavUpdate(page: string) {
+    document.cookie = `page=${page}`;
     props.updateNav(page);
   }
 

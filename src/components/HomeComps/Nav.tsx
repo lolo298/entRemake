@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavCss } from "../cssGlobs";
 
-
 export function Nav(props) {
   function handleNavUpdate(page: string) {
     document.cookie = `page=${page}`;

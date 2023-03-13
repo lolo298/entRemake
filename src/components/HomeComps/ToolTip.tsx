@@ -5,6 +5,7 @@ export function ToolTip(props) {
   console.log(props.passCss);
   const passCss = props.passCss;
   let tooltipCss = {
+    zIndex: 10,
     color: "red",
     display: "none",
     flexDirection: "column",

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { css } from "@emotion/react";
 import { Card } from "./Card";
 export function Cards() {
-  const [grid, setGrid] = useState(5);
+  const [grid, setGrid] = useState(4);
 
   const cardsCss = {
     display: "grid",
     gridTemplateColumns: `1fr 1fr`,
-    gridTemplateRows: `repeat(${Math.ceil(grid/2)}, 1fr)`,
+    gridTemplateRows: `repeat(${Math.ceil(grid / 2)}, 1fr)`,
     gap: "1rem",
     padding: "1rem",
     width: "80%",
@@ -18,11 +18,10 @@ export function Cards() {
 
   return (
     <div css={css(cardsCss)}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card type="emploiTmp" />
+      <Card type="message" />
+      <Card type="notes" />
+      <Card type="moodle" />
     </div>
   );
 }

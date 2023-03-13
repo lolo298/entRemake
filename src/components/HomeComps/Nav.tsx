@@ -4,28 +4,28 @@ import { css } from "@emotion/react";
 import { ToolTip } from "./ToolTip";
 
 export function Nav(props) {
-
-const NavCss = css`
-  width: 100%;
-  ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 7rem;
-    a {
-      position: relative;
-      text-decoration: none;
-      color: #000;
-      &:visited {
+  const NavCss = css`
+    width: 100%;
+    ul {
+      z-index: 10;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 7rem;
+      a {
+        position: relative;
+        text-decoration: none;
         color: #000;
-      }
-      &:hover {
-        color: #faa61a;
+        &:visited {
+          color: #000;
+        }
+        &:hover {
+          color: #faa61a;
+        }
       }
     }
-  }
-`;
+  `;
 
   const [hover, setHover] = useState("");
   let tooltipCss_bureau = {},
@@ -35,7 +35,6 @@ const NavCss = css`
     tooltipCss_vie = {},
     tooltipCss_help = {};
 
-  
   switch (hover) {
     case "bureau":
       tooltipCss_bureau = {
@@ -95,11 +94,11 @@ const NavCss = css`
         </Link>
         <Link to="/home" onMouseEnter={handleHover} onMouseLeave={handleHover} id="biblio">
           Bibliothèques
-          <ToolTip type="biblio" passCss={tooltipCss_biblio}/>
+          <ToolTip type="biblio" passCss={tooltipCss_biblio} />
         </Link>
         <Link to="/home" onMouseEnter={handleHover} onMouseLeave={handleHover} id="vie">
           Vie de l'établissement
-          <ToolTip type="vie" passCss={tooltipCss_vie}/>
+          <ToolTip type="vie" passCss={tooltipCss_vie} />
         </Link>
         <Link to="/home" onMouseEnter={handleHover} onMouseLeave={handleHover} id="help">
           Assistance

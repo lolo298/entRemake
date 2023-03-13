@@ -5,7 +5,6 @@ import { flexCol }from "./cssGlobs";
 export function Home() {
   const app = css`
     ${flexCol}
-    gap: 3rem;
     background-color: var(--main-content);
     width: 100%;
     height: 90%;

@@ -11,9 +11,9 @@ export function Cards() {
     gap: "1rem",
     padding: "1rem",
     width: "80%",
-    height: "max-content",
+    height: "100%",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   };
 
   return (

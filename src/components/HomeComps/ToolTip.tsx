@@ -14,12 +14,12 @@ export function ToolTip(props) {
     gap: "1rem",
     width: "max-content",
     position: "absolute",
-    top: "100%",
+    top: "150%",
     left: "0",
     backgroundColor: "white",
     boxShadow: "0 0 5px 0 rgba(0,0,0,0.5)",
     padding: "20%",
-    ...(passCss ? passCss : {}),
+    ...(passCss ? passCss : {})
   };
 
   const type = props.type;
@@ -35,13 +35,13 @@ export function ToolTip(props) {
         <Link to="/home">Ma messagerie</Link>,
         <Link to="/home">Mon espace document</Link>,
         <Link to="/home">Annuaire université de Rennes</Link>,
-        <Link to="/home">Mes abonnements aux listes de diffusion d'étudiants</Link>,
+        <Link to="/home">Mes abonnements aux listes de diffusion d'étudiants</Link>
       ];
       break;
     case "intranet":
       childs = [
         <Link to="/home">Accéder au portail étudiants</Link>,
-        <Link to="/home">Mes notes</Link>,
+        <Link to="/home">Mes notes</Link>
       ];
       break;
     case "formation":
@@ -50,7 +50,7 @@ export function ToolTip(props) {
         <Link to="/home">Offre de stage, d'alternance et emplois</Link>,
         <Link to="/home">Klaxoon</Link>,
         <Link to="/home">Pix</Link>,
-        <Link to="/home">Cours a l'international</Link>,
+        <Link to="/home">Cours a l'international</Link>
       ];
       break;
     case "biblio":
@@ -58,7 +58,7 @@ export function ToolTip(props) {
         <Link to="/home">Vos Bibliothèques</Link>,
         <Link to="/home">Supernova</Link>,
         <Link to="/home">Synthèses - Thèses en ligne université de Rennes</Link>,
-        <Link to="/home">Compte lecteur</Link>,
+        <Link to="/home">Compte lecteur</Link>
       ];
       break;
     case "vie":

@@ -1,13 +1,9 @@
 import { LoginProps } from "Login";
 import { Link } from "react-router-dom";
 import { loginLabel, btnLong, oubli, loginForm } from "./css";
-import { store } from "../../store";
+import { updateNav } from "../../store";
 
 export function LoginForm(props: LoginProps) {
-  function handleNavUpdate(page: string) {
-    store.dispatch({ type: "SET_PAGE", payload: page });
-  }
-
   function handleLabelPlaceholder(e) {
     console.log(e);
     if (e.target instanceof HTMLInputElement) {
@@ -19,7 +15,7 @@ export function LoginForm(props: LoginProps) {
         let options = {
           duration: 200,
           easing: "ease-in-out",
-          fill: "forwards",
+          fill: "forwards"
         };
         label.animate(keyframes, options);
       }
@@ -32,7 +28,7 @@ export function LoginForm(props: LoginProps) {
         let options = {
           duration: 200,
           easing: "ease-in-out",
-          fill: "forwards",
+          fill: "forwards"
         };
         label.animate(keyframes, options);
       }
@@ -67,7 +63,7 @@ export function LoginForm(props: LoginProps) {
         <a href="https://youtu.be/dQw4w9WgXcQ">Identifiant oublié ?</a>
         <a href="https://youtu.be/dQw4w9WgXcQ">Mot de passe oublié ?</a>
       </div>
-      <Link to={"/home"} css={btnLong} onClick={() => handleNavUpdate("Home")}>
+      <Link to={"/home"} css={btnLong} onClick={() => updateNav("Home")}>
         Se connecter
       </Link>
     </form>

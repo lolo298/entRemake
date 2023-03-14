@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: path.resolve("dist"),
     filename: "main.js",
-    publicPath: '/',
+    publicPath: "/"
   },
   //define babel loader
   module: {
@@ -13,17 +13,18 @@ module.exports = {
       { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/ },
       { test: /\.css$/i, use: ["style-loader", "css-loader"] },
       { test: /\.tsx$/, loader: "ts-loader", exclude: /node_modules/ },
-    ],
+      { test: /\.ts$/, loader: "ts-loader", exclude: /node_modules/ }
+    ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js"]
   },
   devServer: {
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, "public"),
+      directory: path.join(__dirname, "public")
     },
     compress: true,
-    port: 9000,
-  },
+    port: 9000
+  }
 };

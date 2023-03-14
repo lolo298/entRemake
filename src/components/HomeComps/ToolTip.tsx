@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { store } from "../../store";
+import { updateNav } from "../../store";
 
 export function ToolTip(props) {
   const passCss = props.passCss;
@@ -19,7 +19,7 @@ export function ToolTip(props) {
     backgroundColor: "white",
     boxShadow: "0 0 5px 0 rgba(0,0,0,0.5)",
     padding: "20%",
-    ...(passCss ? passCss : {}),
+    ...(passCss ? passCss : {})
   };
 
   const type = props.type;
@@ -29,19 +29,20 @@ export function ToolTip(props) {
   switch (type) {
     case "login":
       childs = [
-        <Link to="/home" onClick={() => handleNavUpdate("Home")}>
+        <Link to="/home" onClick={() => updateNav("Home")}>
           Emplois du temps
         </Link>,
-        <Link to="/home" onClick={() => handleNavUpdate("Home")}>
+        <Link to="/home" onClick={() => updateNav("Home")}>
           Actes administratifs
         </Link>,
-        <Link to="/home" onClick={() => handleNavUpdate("Home")}>
+        <Link to="/home" onClick={() => updateNav("Home")}>
           Annuaire
         </Link>,
-        <Link to="/home" onClick={() => handleNavUpdate("Home")}>
+        <Link to="/home" onClick={() => updateNav("Home")}>
           Assistance
-        </Link>,
+        </Link>
       ];
+      break;
     case "bureau":
       childs = [
         <Link to="/home" key={type + "1"}>
@@ -64,7 +65,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "7"}>
           Mes abonnements aux listes de diffusion d'étudiants
-        </Link>,
+        </Link>
       ];
       break;
     case "intranet":
@@ -74,7 +75,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "2"}>
           Mes notes
-        </Link>,
+        </Link>
       ];
       break;
     case "formation":
@@ -93,7 +94,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "5"}>
           Cours a l'international
-        </Link>,
+        </Link>
       ];
       break;
     case "biblio":
@@ -109,7 +110,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "4"}>
           Compte lecteur
-        </Link>,
+        </Link>
       ];
       break;
     case "vie":
@@ -119,7 +120,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "2"}>
           RGPD
-        </Link>,
+        </Link>
       ];
       break;
     case "help":
@@ -129,7 +130,7 @@ export function ToolTip(props) {
         </Link>,
         <Link to="/home" key={type + "2"}>
           Documentation informatique
-        </Link>,
+        </Link>
       ];
       break;
   }

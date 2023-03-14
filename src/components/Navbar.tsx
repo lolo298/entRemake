@@ -1,7 +1,8 @@
 import { NavbarProps } from "Navbar";
+import { useState } from "react";
 import { jsx, css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faDisplay } from "@fortawesome/free-solid-svg-icons";
 import { Logo, SearchBar, Account } from "./NavbarComps";
 import { ToolTip } from "./HomeComps/ToolTip";
 import { useSelector } from "react-redux";
@@ -11,16 +12,37 @@ const getPage = (state) => state.page;
 const getDevice = (state) => state.device;
 
 export function Navbar(props: NavbarProps) {
+  const [Display, setDisplay] = useState(false);
   const device = useSelector(getDevice);
   const page = useSelector(getPage);
 
   function mobileMenu() {
     const mobileCss = {
       height: "100%",
+      width: "10%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      "svg": {
+        height: "80%",
+        width: "80%"
+      }
     };
+    const tooltipCss = {
+      display: Display ? "flex" : "none"
+    };
+    function toggleTooltip() {
+      setDisplay(!Display);
+    }
     return (
       <div css={css(mobileCss)}>
-        <FontAwesomeIcon icon={faBars} />
+        <FontAwesomeIcon
+          icon={faBars}
+          onClick={(e) => {
+            toggleTooltip();
+          }}
+        />
+        <ToolTip type="login" passCss={tooltipCss} />
       </div>
     );
   }
@@ -33,13 +55,13 @@ export function Navbar(props: NavbarProps) {
     display: "flex",
     justifyContent: device === "Desktop" ? "center" : "space-around",
     alignItems: "center",
-    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
   };
   let buttonsCss = {
     display: "flex",
     gap: "1rem",
     width: "20%",
-    justifyContent: "space-around",
+    justifyContent: "space-around"
   };
 
   function loginNav() {

@@ -1,22 +1,18 @@
 import { LoginProps } from "Login";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Nav,LoginForm, Personnel } from "./LoginComps";
+import { Nav, LoginForm, Personnel } from "./LoginComps";
 import { app, loginContent, btnLong } from "./LoginComps";
-import { store } from "../store";
+import { updateNav } from "../store";
 
 export function Login(props: LoginProps) {
-  function handleNavUpdate(page: string) {
-    store.dispatch({ type: "SET_PAGE", payload: page });
-  }
-
   return (
     <div id="app" css={app}>
-      <Nav updateNav={handleNavUpdate} />
+      <Nav />
       <div id="login-content" css={loginContent}>
         <LoginForm />
         <p id="autresMethodes">OU</p>
-        <Link to={"/home"} css={btnLong} onClick={() => handleNavUpdate("Home")}>
+        <Link to={"/home"} css={btnLong} onClick={() => updateNav("Home")}>
           Se connecter avec sesame
         </Link>
         <Personnel />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { store } from "../../store";
+import { updateNav } from "../../store";
 export function Account(props) {
   const AccountCss = {
     color: "black",
@@ -15,12 +15,9 @@ export function Account(props) {
     width: "50%",
     "&:hover": {
       backgroundColor: "#FAA61A",
-      color: "white",
-    },
+      color: "white"
+    }
   };
-  function handleNavUpdate(page: string) {
-    store.dispatch({ type: "SET_PAGE", payload: page });
-  }
   let title = "Mon compte";
   let icons = faUser;
   switch (props.type) {
@@ -34,7 +31,7 @@ export function Account(props) {
       break;
   }
   return (
-    <Link to="/" css={css(AccountCss)} onClick={() => handleNavUpdate("Login")}>
+    <Link to="/" css={css(AccountCss)} onClick={() => updateNav("Login")}>
       <FontAwesomeIcon icon={icons} />
       <p>{title}</p>
     </Link>

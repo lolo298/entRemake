@@ -17,13 +17,14 @@ const pageReducer = createReducer("Login", (builder) => {
     return action.payload;
   });
 });
-function updateNav(page: string) {
+
+export function updateNav(page: string) {
   store.dispatch({ type: "SET_PAGE", payload: page });
 }
 
 export const store = configureStore({
   reducer: {
     device: deviceReducer,
-    page: pageReducer,
-  },
+    page: pageReducer
+  }
 });

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { NavCss } from "../cssGlobs";
+import { css } from "@emotion/react";
+import { navCss } from "../cssGlobs";
 import { updateNav } from "../../store";
 
 export function Nav(props) {
   return (
-    <nav css={NavCss}>
+    <nav css={css(navCss)}>
       <ul>
         <Link to="/home" onClick={() => updateNav("Home")}>
           Emplois du temps

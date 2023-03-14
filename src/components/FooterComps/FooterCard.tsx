@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
+import { separator } from "../cssGlobs";
 
 export function FooterCard(props) {
   let childs: JSX.Element[] = [];
@@ -98,13 +99,6 @@ export function FooterCard(props) {
       break;
   }
 
-  const separator = {
-    width: "80%",
-    height: "1px",
-    backgroundColor: "rgba(0,0,0,0.2)",
-    margin: "10px 0",
-  };
-
   const cardCss = {
     display: "flex",
     flexDirection: "column" as "column",
@@ -113,13 +107,13 @@ export function FooterCard(props) {
     warp: "wrap",
     "h2": {
       color: "#FAA61A",
-      fontWeight: "100",
+      fontWeight: "100"
     },
     "a": {
       color: "#000",
       textDecoration: "none",
-      "&:visited":{
-        color: "#000",
+      "&:visited": {
+        color: "#000"
       }
     }
   };
@@ -130,5 +124,5 @@ export function FooterCard(props) {
       <span css={css(separator)}></span>
       {childs}
     </div>
-  )
+  );
 }

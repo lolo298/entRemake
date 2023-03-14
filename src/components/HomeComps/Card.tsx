@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { css } from "@emotion/react";
+import { CSSInterpolation } from "@emotion/serialize";
 
 export function Card(props) {
   const { type, editing } = props;
-  const cardCss = css({
+  const cardCss: CSSInterpolation = {
     justifySelf: "center",
     border: "2px solid #000",
     height: "100%",
     width: "100%",
-    position: "relative",
-    userSelect: "none",
+    position: "relative" as "relative",
+    userSelect: "none" as "none",
     "span": {
-      position: "absolute",
+      position: "absolute" as "absolute",
       top: "100%",
       left: "0",
       zIndex: 1,
@@ -20,14 +21,14 @@ export function Card(props) {
       transform: "translateY(-100%)",
       fontSize: "1.4rem",
       padding: "0.5rem",
-      pointerEvents: "none"
+      pointerEvents: "none" as "none"
     },
     "img": {
       width: "100%",
       height: "100%",
       backgroundColor: "white",
       filter: "brightness(65%)",
-      pointerEvents: "none"
+      pointerEvents: "none" as "none"
     },
     "&:hover": {
       "img": {
@@ -38,7 +39,7 @@ export function Card(props) {
         color: "white"
       }
     }
-  });
+  };
 
   let texte = "";
   switch (type) {
@@ -135,7 +136,7 @@ export function Card(props) {
   if (editing) {
     let i = 0;
     return (
-      <div css={cardCss} {...props} id={"card-" + i++} onMouseDown={moveCard}>
+      <div css={css(cardCss)} {...props} id={"card-" + i++} onMouseDown={moveCard}>
         <span>{texte}</span>
         <img src={type + ".png"} alt={type} />
       </div>
@@ -143,7 +144,7 @@ export function Card(props) {
   }
 
   return (
-    <div css={cardCss}>
+    <div css={css(cardCss)}>
       <span>{texte}</span>
       <img src={type + ".png"} alt={type} />
     </div>

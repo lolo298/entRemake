@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { css } from "@emotion/react";
 import { personnel, personnelContent } from "./css";
 import { updateNav } from "../../store";
 export function Personnel(props) {
@@ -13,7 +14,7 @@ export function Personnel(props) {
   return (
     <div id="personnel" css={personnel}>
       <header>Le portail du personnel et des étudiants</header>
-      <div id="personnel-content" css={personnelContent}>
+      <div id="personnel-content" css={css(personnelContent)}>
         <div className="images-container">
           <Link to={"/home"} className="image-container" onClick={() => updateNav("Home")}>
             <span>Portail des étudiants</span>

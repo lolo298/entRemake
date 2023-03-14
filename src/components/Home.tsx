@@ -6,22 +6,23 @@ import { Footer } from "./Footer";
 
 export function Home() {
   const [organisation, setOrganisation] = useState(false);
-  const app = css`
-    ${flexCol}
-    background-color: var(--main-content);
-    width: 100%;
-    position: relative;
-    a {
-      text-decoration: none;
+  const app = {
+    ...flexCol,
+    backgroundColor: "var(--main-content)",
+    width: "100%",
+    position: "relative" as "relative",
+    "a": {
+      textDecoration: "none"
     }
-  `;
+  };
+
   let aditionnalJsx = <></>;
   if (organisation) {
     aditionnalJsx = <Anchors />;
   }
 
   return (
-    <div id="app" css={app}>
+    <div id="app" css={css(app)}>
       <Nav />
       {/* <button onClick={() => setOrganisation(!organisation)}>
         {organisation ? "enregistrer" : "Organiser mon bureau"}

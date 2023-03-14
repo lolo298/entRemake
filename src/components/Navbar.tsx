@@ -2,19 +2,16 @@ import { NavbarProps } from "Navbar";
 import { useState } from "react";
 import { jsx, css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faDisplay } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { Logo, SearchBar, Account } from "./NavbarComps";
 import { ToolTip } from "./HomeComps/ToolTip";
 import { useSelector } from "react-redux";
-import { store } from "../store";
-
-const getPage = (state) => state.page;
-const getDevice = (state) => state.device;
+import { updateMobileMenu, getDevice, getPage, getMobileMenu } from "../store";
 
 export function Navbar(props: NavbarProps) {
-  const [Display, setDisplay] = useState(false);
-  const device = useSelector(getDevice);
-  const page = useSelector(getPage);
+  const menuOpen = getMobileMenu();
+  const device = getDevice();
+  const page = getPage();
 
   function mobileMenu() {
     const mobileCss = {
@@ -29,15 +26,18 @@ export function Navbar(props: NavbarProps) {
       }
     };
     const tooltipCss = {
-      display: Display ? "flex" : "none"
+      display: menuOpen ? "flex" : "none",
+      top: "100%",
+      left: "20%"
     };
     function toggleTooltip() {
-      setDisplay(!Display);
+      updateMobileMenu(!menuOpen);
     }
     return (
       <div css={css(mobileCss)}>
         <FontAwesomeIcon
-          icon={faBars}
+          id="menuIcon"
+          icon={menuOpen ? faX : faBars}
           onClick={(e) => {
             toggleTooltip();
           }}
@@ -55,7 +55,9 @@ export function Navbar(props: NavbarProps) {
     display: "flex",
     justifyContent: device === "Desktop" ? "center" : "space-around",
     alignItems: "center",
-    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+    position: "relative" as "relative",
+    zIndex: 100
   };
   let buttonsCss = {
     display: "flex",

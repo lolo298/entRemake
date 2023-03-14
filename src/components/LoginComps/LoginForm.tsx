@@ -1,7 +1,8 @@
 import { LoginProps } from "Login";
 import { Link } from "react-router-dom";
+import { css } from "@emotion/react";
 import { loginLabel, btnLong, oubli, loginForm } from "./css";
-import { updateNav } from "../../store";
+import { updateNav, getMobileMenu } from "../../store";
 
 export function LoginForm(props: LoginProps) {
   function handleLabelPlaceholder(e) {
@@ -36,8 +37,8 @@ export function LoginForm(props: LoginProps) {
   }
 
   return (
-    <form action="#" id="loginForm" css={loginForm}>
-      <label htmlFor="login" css={loginLabel}>
+    <form action="#" id="loginForm" css={css(loginForm)}>
+      <label htmlFor="login" css={css(loginLabel)}>
         <span>Identifiant</span>
         <input
           type="text"
@@ -48,7 +49,7 @@ export function LoginForm(props: LoginProps) {
           onBlur={handleLabelPlaceholder}
         />
       </label>
-      <label htmlFor="password" css={loginLabel}>
+      <label htmlFor="password" css={css(loginLabel)}>
         <span>Mot de passe</span>
         <input
           type="password"
@@ -63,7 +64,7 @@ export function LoginForm(props: LoginProps) {
         <a href="https://youtu.be/dQw4w9WgXcQ">Identifiant oublié ?</a>
         <a href="https://youtu.be/dQw4w9WgXcQ">Mot de passe oublié ?</a>
       </div>
-      <Link to={"/home"} css={btnLong} onClick={() => updateNav("Home")}>
+      <Link to={"/home"} css={css(btnLong)} onClick={() => updateNav("Home")}>
         Se connecter
       </Link>
     </form>

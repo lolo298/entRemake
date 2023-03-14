@@ -1,7 +1,5 @@
 declare module "Login" {
-  export type LoginProps = {
-    updateNav: (page: string) => void;
-  };
+  export type LoginProps = {};
 
   export const Login: (props: LoginProps) => JSX.Element;
 }

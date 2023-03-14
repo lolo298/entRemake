@@ -1,11 +1,11 @@
 import { LoginProps } from "Login";
 import { Link } from "react-router-dom";
 import { loginLabel, btnLong, oubli, loginForm } from "./css";
+import { store } from "../../store";
 
 export function LoginForm(props: LoginProps) {
   function handleNavUpdate(page: string) {
-    document.cookie = `page=${page}`;
-    props.updateNav(page);
+    store.dispatch({ type: "SET_PAGE", payload: page });
   }
 
   function handleLabelPlaceholder(e) {
@@ -67,7 +67,7 @@ export function LoginForm(props: LoginProps) {
         <a href="https://youtu.be/dQw4w9WgXcQ">Identifiant oublié ?</a>
         <a href="https://youtu.be/dQw4w9WgXcQ">Mot de passe oublié ?</a>
       </div>
-      <Link to={"/home"} css={btnLong} onClick={() => handleNavUpdate("home")}>
+      <Link to={"/home"} css={btnLong} onClick={() => handleNavUpdate("Home")}>
         Se connecter
       </Link>
     </form>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { store } from "../../store";
 export function Account(props) {
   const AccountCss = {
     color: "black",
@@ -18,8 +19,7 @@ export function Account(props) {
     },
   };
   function handleNavUpdate(page: string) {
-    document.cookie = `page=${page}`;
-    props.updateNav(page);
+    store.dispatch({ type: "SET_PAGE", payload: page });
   }
   let title = "Mon compte";
   let icons = faUser;
@@ -34,7 +34,7 @@ export function Account(props) {
       break;
   }
   return (
-    <Link to="/" css={css(AccountCss)} onClick={() => handleNavUpdate("login")}>
+    <Link to="/" css={css(AccountCss)} onClick={() => handleNavUpdate("Login")}>
       <FontAwesomeIcon icon={icons} />
       <p>{title}</p>
     </Link>

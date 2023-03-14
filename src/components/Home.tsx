@@ -5,7 +5,7 @@ import { flexCol } from "./cssGlobs";
 import { Footer } from "./Footer";
 
 export function Home() {
-  const [organisation, setOrganisation] = useState(true);
+  const [organisation, setOrganisation] = useState(false);
   const app = css`
     ${flexCol}
     background-color: var(--main-content);
@@ -15,18 +15,17 @@ export function Home() {
       text-decoration: none;
     }
   `;
-    let aditionnalJsx = <></>;
-    if (organisation) {
-        aditionnalJsx = <Anchors />;
-    }
-
+  let aditionnalJsx = <></>;
+  if (organisation) {
+    aditionnalJsx = <Anchors />;
+  }
 
   return (
     <div id="app" css={app}>
       <Nav />
-      <button onClick={() => setOrganisation(!organisation)}>
+      {/* <button onClick={() => setOrganisation(!organisation)}>
         {organisation ? "enregistrer" : "Organiser mon bureau"}
-      </button>
+      </button> */}
       <Cards organisation={organisation} />
       {aditionnalJsx}
       <Footer />

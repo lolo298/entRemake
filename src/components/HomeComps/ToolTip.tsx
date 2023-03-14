@@ -24,7 +24,7 @@ export function ToolTip(props) {
 
   const type = props.type;
 
-  let childs;
+  let childs: JSX.Element[] = [];
 
   switch (type) {
     case "bureau":

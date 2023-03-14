@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 
 export function ToolTip(props) {
-  console.log(props.passCss);
   const passCss = props.passCss;
   let tooltipCss = {
     zIndex: 10,
@@ -29,43 +28,93 @@ export function ToolTip(props) {
   switch (type) {
     case "bureau":
       childs = [
-        <Link to="/home">Mon emploi du temps</Link>,
-        <Link to="/home">Mon dossier étudiant</Link>,
-        <Link to="/home">Mettre un fichier en ligne</Link>,
-        <Link to="/home">Ma messagerie</Link>,
-        <Link to="/home">Mon espace document</Link>,
-        <Link to="/home">Annuaire université de Rennes</Link>,
-        <Link to="/home">Mes abonnements aux listes de diffusion d'étudiants</Link>
+        <Link to="/home" key={type + "1"}>
+          Mon emploi du temps
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          Mon dossier étudiant
+        </Link>,
+        <Link to="/home" key={type + "3"}>
+          Mettre un fichier en ligne
+        </Link>,
+        <Link to="/home" key={type + "4"}>
+          Ma messagerie
+        </Link>,
+        <Link to="/home" key={type + "5"}>
+          Mon espace document
+        </Link>,
+        <Link to="/home" key={type + "6"}>
+          Annuaire université de Rennes
+        </Link>,
+        <Link to="/home" key={type + "7"}>
+          Mes abonnements aux listes de diffusion d'étudiants
+        </Link>
       ];
       break;
     case "intranet":
       childs = [
-        <Link to="/home">Accéder au portail étudiants</Link>,
-        <Link to="/home">Mes notes</Link>
+        <Link to="/home" key={type + "1"}>
+          Accéder au portail étudiants
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          Mes notes
+        </Link>
       ];
       break;
     case "formation":
       childs = [
-        <Link to="/home">Moodle</Link>,
-        <Link to="/home">Offre de stage, d'alternance et emplois</Link>,
-        <Link to="/home">Klaxoon</Link>,
-        <Link to="/home">Pix</Link>,
-        <Link to="/home">Cours a l'international</Link>
+        <Link to="/home" key={type + "1"}>
+          Moodle
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          Offre de stage, d'alternance et emplois
+        </Link>,
+        <Link to="/home" key={type + "3"}>
+          Klaxoon
+        </Link>,
+        <Link to="/home" key={type + "4"}>
+          Pix
+        </Link>,
+        <Link to="/home" key={type + "5"}>
+          Cours a l'international
+        </Link>
       ];
       break;
     case "biblio":
       childs = [
-        <Link to="/home">Vos Bibliothèques</Link>,
-        <Link to="/home">Supernova</Link>,
-        <Link to="/home">Synthèses - Thèses en ligne université de Rennes</Link>,
-        <Link to="/home">Compte lecteur</Link>
+        <Link to="/home" key={type + "1"}>
+          Vos Bibliothèques
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          Supernova
+        </Link>,
+        <Link to="/home" key={type + "3"}>
+          Synthèses - Thèses en ligne université de Rennes
+        </Link>,
+        <Link to="/home" key={type + "4"}>
+          Compte lecteur
+        </Link>
       ];
       break;
     case "vie":
-      childs = [<Link to="/home">Politiques d'établissement</Link>, <Link to="/home">RGPD</Link>];
+      childs = [
+        <Link to="/home" key={type + "1"}>
+          Politiques d'établissement
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          RGPD
+        </Link>
+      ];
       break;
     case "help":
-      childs = [<Link to="/home">SOS</Link>, <Link to="/home">Documentation informatique</Link>];
+      childs = [
+        <Link to="/home" key={type + "1"}>
+          SOS
+        </Link>,
+        <Link to="/home" key={type + "2"}>
+          Documentation informatique
+        </Link>
+      ];
       break;
   }
 

@@ -71,6 +71,7 @@ export const oubli = {
   ...flexCol, //check
   "a": {
     marginTop: "0.5rem",
+    color: "#000",
     "&:visited": {
       color: "#000"
     }

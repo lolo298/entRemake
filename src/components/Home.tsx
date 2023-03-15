@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 import { Nav, Cards, Anchors } from "./HomeComps";
-import { flexCol } from "./cssGlobs";
+import { flexCol, separator } from "./cssGlobs";
 import { Footer } from "./Footer";
 import { getDevice, updateNav } from "../store";
 
@@ -30,10 +30,14 @@ export function Home() {
     nav = <></>;
   }
 
+  function handleOrganisation() {
+    setOrganisation(!organisation);
+  }
+
   return (
     <div id="app" css={css(app)}>
       {nav}
-      <button onClick={() => setOrganisation(!organisation)}>
+      <button onClick={handleOrganisation}>
         {organisation ? "enregistrer" : "Organiser mon bureau"}
       </button>
       <Cards organisation={organisation} />

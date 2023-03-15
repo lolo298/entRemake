@@ -5,9 +5,11 @@ import { separator } from "../cssGlobs";
 export function FooterCard(props) {
   let childs: JSX.Element[] = [];
   const type = props.type;
+  let name = "";
 
   switch (type) {
     case "bureau":
+      name = "Mon bureau";
       childs = [
         <Link to="/home" key="tmp">
           Mon emploi du temps
@@ -33,6 +35,7 @@ export function FooterCard(props) {
       ];
       break;
     case "intranet":
+      name = "Intranet";
       childs = [
         <Link to="/home" key="portail">
           Accéder au portail étudiants
@@ -43,6 +46,7 @@ export function FooterCard(props) {
       ];
       break;
     case "formation":
+      name = "Formation - Insertion professionnel";
       childs = [
         <Link to="/home" key="moodle">
           Moodle
@@ -62,6 +66,7 @@ export function FooterCard(props) {
       ];
       break;
     case "biblio":
+      name = "Bibliothèques";
       childs = [
         <Link to="/home" key="biblio">
           Vos Bibliothèques
@@ -78,6 +83,7 @@ export function FooterCard(props) {
       ];
       break;
     case "vie":
+      name = "Vie de l'établissement";
       childs = [
         <Link to="/home" key="politique">
           Politiques d'établissement
@@ -88,6 +94,7 @@ export function FooterCard(props) {
       ];
       break;
     case "help":
+      name = "Assistance";
       childs = [
         <Link to="/home" key="sos">
           SOS
@@ -120,7 +127,7 @@ export function FooterCard(props) {
 
   return (
     <div className="footer-card" css={css(cardCss)}>
-      <h2>{type}</h2>
+      <h2>{name}</h2>
       <span css={css(separator)}></span>
       {childs}
     </div>

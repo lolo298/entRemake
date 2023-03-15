@@ -5,13 +5,20 @@ import { FooterCard } from "./FooterComps";
 
 export function Footer() {
   let footerCss = {
-    backgroundColor: "var(--main-content)",
-    width: "80%",
+    backgroundColor: "#fff",
+    borderTop: "1px solid #000",
+    width: "100%",
     height: "max-content",
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gridTemplateRows: "repeat(2, 1fr)",
-    alignItems: "flex-start"
+    display: "flex",
+    flexDirection: "column" as "column",
+    alignItems: "center",
+    justifyContent: "center",
+    "#main": {
+      display: "grid",
+      gridTemplateColumns: "repeat(4, 1fr)",
+      gridTemplateRows: "repeat(2, 1fr)",
+      alignItems: "flex-start"
+    }
   };
   if (getDevice() === "Mobile") {
     let footerCss = {
@@ -39,12 +46,16 @@ export function Footer() {
   }
   return (
     <footer css={css(footerCss)}>
-      <FooterCard type="bureau" />
-      <FooterCard type="intranet" />
-      <FooterCard type="formation" />
-      <FooterCard type="biblio" />
-      <FooterCard type="vie" />
-      <FooterCard type="help" />
+      <div id="main">
+        <FooterCard type="bureau" />
+        <FooterCard type="intranet" />
+        <FooterCard type="formation" />
+        <FooterCard type="biblio" />
+        <FooterCard type="vie" />
+        <FooterCard type="help" />
+      </div>
+      <span css={css(separator)}></span>
+      <p>Mentions légales</p>
     </footer>
   );
 }

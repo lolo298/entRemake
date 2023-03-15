@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { updateNav } from "../../store";
+import { updateMobileMenu, updateNav } from "../../store";
 export function Account(props) {
   const AccountCss = {
     color: "black",
@@ -31,7 +31,14 @@ export function Account(props) {
       break;
   }
   return (
-    <Link to="/" css={css(AccountCss)} onClick={() => updateNav("Login")}>
+    <Link
+      to="/"
+      css={css(AccountCss)}
+      onClick={() => {
+        updateNav("Login");
+        updateMobileMenu(false);
+      }}
+    >
       <FontAwesomeIcon icon={icons} />
       <p>{title}</p>
     </Link>

@@ -13,7 +13,7 @@ export function Navbar(props: NavbarProps) {
   const device = getDevice();
   const page = getPage();
 
-  function mobileMenu() {
+  function mobileMenu(state = "login") {
     const mobileCss = {
       height: "100%",
       width: "10%",
@@ -28,7 +28,8 @@ export function Navbar(props: NavbarProps) {
     const tooltipCss = {
       display: menuOpen ? "flex" : "none",
       top: "100%",
-      left: "20%"
+      left: "",
+      right: "0"
     };
     function toggleTooltip() {
       updateMobileMenu(!menuOpen);
@@ -42,7 +43,7 @@ export function Navbar(props: NavbarProps) {
             toggleTooltip();
           }}
         />
-        <ToolTip type="login" passCss={tooltipCss} />
+        <ToolTip type={state} passCss={tooltipCss} />
       </div>
     );
   }
@@ -66,8 +67,8 @@ export function Navbar(props: NavbarProps) {
     justifyContent: "space-around"
   };
 
-  function loginNav() {
-    let menu = device === "Desktop" ? <></> : mobileMenu();
+  function loginNav(state = "login") {
+    let menu = device === "Desktop" ? <></> : mobileMenu(state);
 
     return (
       <nav css={css(navStyle)}>
@@ -93,7 +94,10 @@ export function Navbar(props: NavbarProps) {
     case "Login":
       return loginNav();
     case "Home":
-      return homeNav();
+      if (device === "Desktop") {
+        return homeNav();
+      }
+      return loginNav("home");
     default:
       return loginNav();
   }

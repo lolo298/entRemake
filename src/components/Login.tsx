@@ -7,6 +7,10 @@ import { app, loginContent, btnLong } from "./LoginComps";
 import { updateNav, getMobileMenu, getDevice } from "../store";
 
 export function Login(props: LoginProps) {
+  let Page =
+    window.location.pathname.split("/")[1].charAt(0).toUpperCase() +
+    window.location.pathname.split("/")[1].slice(1);
+  updateNav(Page ? Page : "Login");
   if (getMobileMenu()) {
     app.filter = "brightness(0.5)";
     app.pointerEvents = "none";

@@ -33,9 +33,9 @@ export function Home() {
   return (
     <div id="app" css={css(app)}>
       {nav}
-      {/* <button onClick={() => setOrganisation(!organisation)}>
+      <button onClick={() => setOrganisation(!organisation)}>
         {organisation ? "enregistrer" : "Organiser mon bureau"}
-      </button> */}
+      </button>
       <Cards organisation={organisation} />
       {aditionnalJsx}
       <Footer />

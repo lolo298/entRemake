@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 import { Card } from "./Card";
 import { getDevice } from "../../store";
 export function Cards(props) {
-  const [grid, setGrid] = useState(4);
-  const [cardOrder, setCardOrder] = useState(["emploiTmp", "message", "notes", "moodle"]);
+  const grid = 4;
+  const cardOrder = ["emploiTmp", "message", "notes", "moodle"];
   let templateArea = "";
   for (let i = 0; i < grid; i = i + 2) {
     templateArea += `"card-${i} card-${i + 1}" `;
@@ -24,20 +24,8 @@ export function Cards(props) {
     flexDirection: "" as "column",
     zIndex: 1
   };
-  const posCss = {
-    position: "relative" as "relative",
-    width: "100%",
-    height: "100%",
-    "&:hover": {
-      "& .card": {
-        opacity: "0.5"
-      },
-      "& .card:hover": {
-        opacity: "1"
-      }
-    }
-  };
 
+  console.log(grid, cardOrder);
   if (props.organisation) {
     let gridArea = 0;
     return (
@@ -57,13 +45,6 @@ export function Cards(props) {
     cardsCss.display = "flex";
     cardsCss.flexDirection = "column" as "column";
     cardsCss.alignItems = "center";
-    // return (
-    //   <div css={css(cardsCss)}>
-    //     {cardOrder.map((card) => (
-    //       <Card type={card} key={card} />
-    //     ))}
-    //   </div>
-    // );
   }
   return (
     <div css={css(cardsCss)}>

@@ -101,8 +101,8 @@ export function Card(props) {
       card.style.position = "absolute";
       card.style.width = "375px";
       card.style.height = "300px";
-      card.style.left = cardCenterX + "px";
-      card.style.top = cardCenterY + "px";
+      card.style.left = e.clientX + "px";
+      card.style.top = e.clientY + "px";
       card.style.zIndex = "100";
       card.style.transform = "translate(-50%, -50%)";
     }

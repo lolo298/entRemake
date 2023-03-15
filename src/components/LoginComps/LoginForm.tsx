@@ -2,7 +2,7 @@ import { LoginProps } from "Login";
 import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 import { loginLabel, btnLong, oubli, loginForm } from "./css";
-import { updateNav, getMobileMenu } from "../../store";
+import { updateNav, getMobileMenu, getDevice } from "../../store";
 
 export function LoginForm(props: LoginProps) {
   function handleLabelPlaceholder(e) {
@@ -34,6 +34,13 @@ export function LoginForm(props: LoginProps) {
         label.animate(keyframes, options);
       }
     }
+  }
+
+  if (getDevice() === "Mobile") {
+    btnLong.width = "80%";
+    btnLong.marginTop = "1rem";
+    loginForm.justifyContent = "center";
+    loginForm.height = "max-content";
   }
 
   return (

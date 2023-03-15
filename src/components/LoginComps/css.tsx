@@ -57,7 +57,12 @@ export const btnLong = {
   justifyContent: "center",
   border: "2px solid black",
   backgroundColor: "var(--bouton-primary)",
-  color: "#fff"
+  color: "#fff",
+  marginTop: "",
+  marginBottom: "",
+  marginLeft: "",
+  marginRight: "",
+  textAlign: "center" as "center"
 };
 export const oubli = {
   fontSize: "0.8em",

@@ -4,11 +4,21 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store, updateDevice } from "./store";
-let device = "Desktop";
-if (navigator.userAgent.includes("Android") || navigator.userAgent.includes("iPhone")) {
-  device = "Mobile";
+
+function getDeviceType() {
+  let device = "Desktop";
+  if (
+    navigator.userAgent.includes("Android") ||
+    navigator.userAgent.includes("iPhone") ||
+    navigator.userAgent.includes("iPad") ||
+    window.innerWidth <= 730
+  ) {
+    device = "Mobile";
+  }
+  return device;
 }
-updateDevice(device);
+onresize = () => updateDevice(getDeviceType());
+updateDevice(getDeviceType());
 let Page =
   window.location.pathname.split("/")[1].charAt(0).toUpperCase() +
   window.location.pathname.split("/")[1].slice(1);

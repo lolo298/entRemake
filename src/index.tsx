@@ -22,6 +22,12 @@ updateDevice(getDeviceType());
 
 import { Navbar, Login, Home } from "./components";
 
+onbeforeunload = () => {
+  let state = store.getState();
+  state.editing = false;
+  localStorage.setItem("state", JSON.stringify(state));
+};
+
 let Page =
   window.location.pathname.split("/")[1].charAt(0).toUpperCase() +
   window.location.pathname.split("/")[1].slice(1);

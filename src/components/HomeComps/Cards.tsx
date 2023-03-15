@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { css } from "@emotion/react";
 import { Card } from "./Card";
-import { getDevice } from "../../store";
+import { getDevice, getAnchorOrder, getEditing } from "../../store";
 export function Cards(props) {
   const grid = 4;
-  const cardOrder = ["emploiTmp", "message", "notes", "moodle"];
+  const cardOrder = getAnchorOrder();
+  const editing = getEditing();
+  const device = getDevice();
   let templateArea = "";
   for (let i = 0; i < grid; i = i + 2) {
     templateArea += `"card-${i} card-${i + 1}" `;
@@ -26,25 +28,16 @@ export function Cards(props) {
     zIndex: 1
   };
 
-  console.log(grid, cardOrder);
-  if (props.organisation) {
+  if (editing) {
     return (
       <div css={css(cardsCss)} id="Cards">
-        {cardOrder.map((card, key) => {
-          return(
-
-          <Card
-            type={card}
-            editing={props.organisation.toString()}
-            key={card}
-            css={css({ gridArea: "card-" + key })}
-            idKey={key}
-          />
-        )})}
+        {cardOrder.map((card, key) => (
+          <Card type={card} key={card} css={css({ gridArea: "card-" + key })} idkey={key} />
+        ))}
       </div>
     );
   }
-  if (getDevice() === "Mobile") {
+  if (device === "Mobile") {
     cardsCss.display = "flex";
     cardsCss.flexDirection = "column" as "column";
     cardsCss.alignItems = "center";

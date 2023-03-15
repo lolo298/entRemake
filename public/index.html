@@ -20,6 +20,8 @@
         height: 100%;
         width: 100%;
         margin: 0;
+        position: relative;
+        z-index: 1;
       }
       #Anchors {
         pointer-events: none;
@@ -27,7 +29,20 @@
     </style>
   </head>
   <body>
-            <canvas id="debugAnchors" width="1000" height="500" style="position: absolute;top: 0;left: 0;width: 100vw;height: 100vh;pointer-events: none; z-index: 10000;" ></canvas>
+    <canvas
+      id="debugAnchors"
+      width="1000"
+      height="500"
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 99;
+      "
+    ></canvas>
     <div id="root" style="height: 100%"></div>
     <script src="main.js"></script>
   </body>

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
 import { css } from "@emotion/react";
 import { CSSInterpolation } from "@emotion/serialize";
-import { Anchors } from "./Anchors";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getEditing, updateAnchorOrder, getAnchorOrder } from "../../store";
 
 export function Card(props) {
-  const { type, editing } = props;
+  const { type } = props;
+  const editing = getEditing();
+  const AnchorOrder = getAnchorOrder();
   const cardCss: CSSInterpolation = {
     justifySelf: "center",
     border: "2px solid #000",
@@ -81,79 +84,101 @@ export function Card(props) {
       const cardPos = card.getBoundingClientRect();
       let centerX = cardPos.left + (cardPos.right - cardPos.left) / 2;
       let centerY = cardPos.top + (cardPos.bottom - cardPos.top) / 2;
-      cardsAnchor.push({...cardPos,centerX: centerX, centerY: centerY});
+      cardsAnchor.push(cardPos);
     });
-
 
     function move(e) {
       const canva = document.querySelector("#debugAnchors") as HTMLCanvasElement;
       const ctx = canva.getContext("2d");
-      console.log(canva.width, canva.height)
       let newAnchors = [];
-      cardsAnchor.forEach((anchor) =>{
+      cardsAnchor.forEach((anchor) => {
         newAnchors.push({
-          x: anchor.x * canva.width / window.innerWidth,
-          y: anchor.y * canva.height / window.innerHeight,
-          width: (anchor.right-anchor.left) * canva.width / window.innerWidth,
-          height: (anchor.bottom-anchor.top) * canva.height / window.innerHeight,
+          x: (anchor.x * canva.width) / window.innerWidth,
+          y: (anchor.y * canva.height) / window.innerHeight,
+          width: ((anchor.right - anchor.left) * canva.width) / window.innerWidth,
+          height: ((anchor.bottom - anchor.top) * canva.height) / window.innerHeight
         });
       });
 
       ctx.clearRect(0, 0, canva.width, canva.height);
       newAnchors.forEach((anchor) => {
-      ctx.beginPath();
-      ctx.moveTo(anchor.x, anchor.y);
-      ctx.lineTo(anchor.x + anchor.width, anchor.y);
-      ctx.lineTo(anchor.x + anchor.width, anchor.y + anchor.height);
-      ctx.lineTo(anchor.x, anchor.y + anchor.height);
-      ctx.lineTo(anchor.x, anchor.y);
-      ctx.strokeStyle = "red";
-      ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(anchor.x, anchor.y);
+        ctx.lineTo(anchor.x + anchor.width, anchor.y);
+        ctx.lineTo(anchor.x + anchor.width, anchor.y + anchor.height);
+        ctx.lineTo(anchor.x, anchor.y + anchor.height);
+        ctx.lineTo(anchor.x, anchor.y);
+        ctx.strokeStyle = "red";
+        ctx.stroke();
       });
 
       card.style.pointerEvents = "none";
       card.style.position = "absolute";
       card.style.width = "375px";
       card.style.height = "300px";
-      card.style.zIndex = "100";
+      card.style.zIndex = "1000";
       //set the card to the mouse position
 
-      // the card follow the cursor but is excentered 
+      // the card follow the cursor but is excentered
       // card.style.transform = "translate(-50%, -50%)";
 
-
-
-//card center
+      //card center
       card.style.left = e.clientX + "px";
       card.style.top = e.clientY + "px";
-      if(card.id === "card-0") {
+      if (card.id === "card-0") {
         card.style.left = e.clientX - 187.5 + "px";
         card.style.top = e.clientY - 150 + "px";
         card.style.transform = "translate(-35%, -50%)";
       }
-      if(card.id === "card-1") {
-        card.style.transform = "translate(0, -200%)";
+      if (card.id === "card-1") {
+        card.style.transform = "translate(-300%, -100%)";
       }
-      ctx.beginPath();
-      ctx.moveTo(canva.width/2, canva.height/2);
-      ctx.lineTo(e.clientX*canva.width/window.innerWidth , e.clientY* canva.height / window.innerHeight);
-      ctx.strokeStyle = "blue";
-      ctx.stroke();
-
-
-      if((e.clientX > cardsAnchor[0].x && e.clientX < cardsAnchor[0].right)&& (e.clientY < cardsAnchor[0].bottom && e.clientY > cardsAnchor[0].top)) {
-        console.log("card 1")
+      if (card.id === "card-2") {
+        card.style.transform = "translate(-100%, -250%)";
       }
-      if((e.clientX > cardsAnchor[1].x && e.clientX < cardsAnchor[1].right)&& (e.clientY < cardsAnchor[1].bottom && e.clientY > cardsAnchor[1].top)) {
-        console.log("card 2")
+      if (card.id === "card-3") {
+        card.style.transform = "translate(-300%, -250%)";
       }
-      if((e.clientX > cardsAnchor[2].x && e.clientX < cardsAnchor[2].right)&& (e.clientY < cardsAnchor[2].bottom && e.clientY > cardsAnchor[2].top)) {
-        console.log("card 3")
+      cardsPos.forEach((card: HTMLElement) => {
+        card.style.backgroundColor = "transparent";
+        card.style.opacity = "0.5";
+      });
+      if (
+        e.clientX > cardsAnchor[0].x &&
+        e.clientX < cardsAnchor[0].right &&
+        e.clientY < cardsAnchor[0].bottom &&
+        e.clientY > cardsAnchor[0].top
+      ) {
+        const anchor = document.querySelector("#anchor-0") as HTMLElement;
+        anchor.style.backgroundColor = "blue";
       }
-      if((e.clientX > cardsAnchor[3].x && e.clientX < cardsAnchor[3].right)&& (e.clientY < cardsAnchor[3].bottom && e.clientY > cardsAnchor[3].top)) {
-        console.log("card 4")
+      if (
+        e.clientX > cardsAnchor[1].x &&
+        e.clientX < cardsAnchor[1].right &&
+        e.clientY < cardsAnchor[1].bottom &&
+        e.clientY > cardsAnchor[1].top
+      ) {
+        const anchor = document.querySelector("#anchor-1") as HTMLElement;
+        anchor.style.backgroundColor = "blue";
       }
-      
+      if (
+        e.clientX > cardsAnchor[2].x &&
+        e.clientX < cardsAnchor[2].right &&
+        e.clientY < cardsAnchor[2].bottom &&
+        e.clientY > cardsAnchor[2].top
+      ) {
+        const anchor = document.querySelector("#anchor-2") as HTMLElement;
+        anchor.style.backgroundColor = "blue";
+      }
+      if (
+        e.clientX > cardsAnchor[3].x &&
+        e.clientX < cardsAnchor[3].right &&
+        e.clientY < cardsAnchor[3].bottom &&
+        e.clientY > cardsAnchor[3].top
+      ) {
+        const anchor = document.querySelector("#anchor-3") as HTMLElement;
+        anchor.style.backgroundColor = "blue";
+      }
     }
 
     function stop(e) {
@@ -172,7 +197,71 @@ export function Card(props) {
         card.style.transform = "";
         card.style.zIndex = "0";
       }
-      // card.style.transform = "translate(0, 0)";
+      cardsPos.forEach((card: HTMLElement) => {
+        card.style.backgroundColor = "";
+        card.style.opacity = "";
+      });
+      check1: if (
+        e.clientX > cardsAnchor[0].x &&
+        e.clientX < cardsAnchor[0].right &&
+        e.clientY < cardsAnchor[0].bottom &&
+        e.clientY > cardsAnchor[0].top
+      ) {
+        let anchor = card.getAttribute("type") as string;
+        if (!anchor) break check1;
+        let oldCard = AnchorOrder[0];
+        let currentCard = AnchorOrder.indexOf(anchor);
+        let newAnchorOrder = [...AnchorOrder];
+        newAnchorOrder[0] = anchor;
+        newAnchorOrder[currentCard] = oldCard;
+        updateAnchorOrder(newAnchorOrder);
+      }
+      check2: if (
+        e.clientX > cardsAnchor[1].x &&
+        e.clientX < cardsAnchor[1].right &&
+        e.clientY < cardsAnchor[1].bottom &&
+        e.clientY > cardsAnchor[1].top
+      ) {
+        let anchor = card.getAttribute("type");
+        if (!anchor) break check2;
+        let oldCard = AnchorOrder[1];
+        let currentCard = AnchorOrder.indexOf(anchor);
+        let newAnchorOrder = [...AnchorOrder];
+        newAnchorOrder[1] = anchor;
+        newAnchorOrder[currentCard] = oldCard;
+        updateAnchorOrder(newAnchorOrder);
+      }
+      check3: if (
+        e.clientX > cardsAnchor[2].x &&
+        e.clientX < cardsAnchor[2].right &&
+        e.clientY < cardsAnchor[2].bottom &&
+        e.clientY > cardsAnchor[2].top
+      ) {
+        let anchor = card.getAttribute("type");
+        if (!anchor) break check3;
+        let oldCard = AnchorOrder[2];
+        let currentCard = AnchorOrder.indexOf(anchor);
+        let newAnchorOrder = [...AnchorOrder];
+        newAnchorOrder[2] = anchor;
+        newAnchorOrder[currentCard] = oldCard;
+        updateAnchorOrder(newAnchorOrder);
+      }
+      check4: if (
+        e.clientX > cardsAnchor[3].x &&
+        e.clientX < cardsAnchor[3].right &&
+        e.clientY < cardsAnchor[3].bottom &&
+        e.clientY > cardsAnchor[3].top
+      ) {
+        let anchor = card.getAttribute("type");
+        if (!anchor) break check4;
+        let oldCard = AnchorOrder[3];
+        let currentCard = AnchorOrder.indexOf(anchor);
+        let newAnchorOrder = [...AnchorOrder];
+        newAnchorOrder[3] = anchor;
+        newAnchorOrder[currentCard] = oldCard;
+        updateAnchorOrder(newAnchorOrder);
+      }
+      console.log(AnchorOrder);
       document.removeEventListener("mousemove", move);
       document.removeEventListener("mouseup", stop);
     }
@@ -183,8 +272,21 @@ export function Card(props) {
 
   if (editing) {
     return (
-      <div css={css(cardCss)} {...props} id={"card-" + props.idKey} onMouseDown={moveCard}>
+      <div css={css(cardCss)} {...props} id={"card-" + props.idkey} onMouseDown={moveCard}>
         <span>{texte}</span>
+        <FontAwesomeIcon
+          icon={faEdit}
+          css={css({
+            position: "absolute",
+            zIndex: 1,
+            top: 0,
+            left: 0,
+            transform: "translate(50%, 50%)",
+            width: "50%",
+            height: "50%",
+            pointerEvents: "none"
+          })}
+        />
         <img src={type + ".png"} alt={type} />
       </div>
     );

@@ -11,6 +11,7 @@ export function Cards(props) {
   }
 
   const cardsCss = {
+    position: "relative" as "relative",
     display: "grid",
     gridTemplateColumns: `1fr 1fr`,
     gridTemplateRows: `repeat(${Math.ceil(grid / 2)}, 1fr)`,
@@ -27,17 +28,19 @@ export function Cards(props) {
 
   console.log(grid, cardOrder);
   if (props.organisation) {
-    let gridArea = 0;
     return (
       <div css={css(cardsCss)} id="Cards">
-        {cardOrder.map((card) => (
+        {cardOrder.map((card, key) => {
+          return(
+
           <Card
             type={card}
             editing={props.organisation.toString()}
             key={card}
-            css={css({ gridArea: "card-" + gridArea++ })}
+            css={css({ gridArea: "card-" + key })}
+            idKey={key}
           />
-        ))}
+        )})}
       </div>
     );
   }

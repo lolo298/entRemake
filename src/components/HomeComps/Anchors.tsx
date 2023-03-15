@@ -28,8 +28,9 @@ export function Anchors(props) {
       alignItems: "center",
       position: "absolute" as "absolute",
       top: "73px",
+      transform: "translateY(15%)",
       color: "red",
-      zIndex: 1
+      zIndex: 2
     };
 
     const posCss = {

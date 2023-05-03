@@ -101,15 +101,15 @@ export function Card(props) {
       });
 
       ctx.clearRect(0, 0, canva.width, canva.height);
-      newAnchors.forEach((anchor) => {
-        ctx.beginPath();
-        ctx.moveTo(anchor.x, anchor.y);
-        ctx.lineTo(anchor.x + anchor.width, anchor.y);
-        ctx.lineTo(anchor.x + anchor.width, anchor.y + anchor.height);
-        ctx.lineTo(anchor.x, anchor.y + anchor.height);
-        ctx.lineTo(anchor.x, anchor.y);
-        ctx.stroke();
-      });
+      // newAnchors.forEach((anchor) => {
+      //   ctx.beginPath();
+      //   ctx.moveTo(anchor.x, anchor.y);
+      //   ctx.lineTo(anchor.x + anchor.width, anchor.y);
+      //   ctx.lineTo(anchor.x + anchor.width, anchor.y + anchor.height);
+      //   ctx.lineTo(anchor.x, anchor.y + anchor.height);
+      //   ctx.lineTo(anchor.x, anchor.y);
+      //   ctx.stroke();
+      // });
 
       card.style.pointerEvents = "none";
       card.style.position = "absolute";

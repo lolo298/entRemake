@@ -108,7 +108,6 @@ export function Card(props) {
         ctx.lineTo(anchor.x + anchor.width, anchor.y + anchor.height);
         ctx.lineTo(anchor.x, anchor.y + anchor.height);
         ctx.lineTo(anchor.x, anchor.y);
-        ctx.strokeStyle = "red";
         ctx.stroke();
       });
 
